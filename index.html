@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>DELULUHOUSE 💗</title>
+
+  <link rel="stylesheet" href="style.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- FLOATING HEARTS -->
+  <div class="hearts"></div>
+
+  <!-- WELCOME SCREEN -->
+  <section id="welcomeScreen" class="screen welcome-screen">
+
+    <div class="sparkle s1">✦</div>
+    <div class="sparkle s2">✧</div>
+    <div class="sparkle s3">✦</div>
+
+    <div class="welcome-content">
+      <div class="logo-heart">♥</div>
+
+      <h1>DELULU<span>HOUSE</span></h1>
+
+      <p class="tagline">
+        Your world. Your story.<br>
+        Your delusions. 💗
+      </p>
+
+      <button class="main-button" onclick="startGame()">
+        ENTER THE HOUSE ✨
+      </button>
+
+      <p class="tiny-text">No delulu is too delulu here.</p>
+    </div>
+
+  </section>
+
+
+  <!-- CHARACTER CREATOR -->
+  <section id="creatorScreen" class="screen creator-screen hidden">
+
+    <div class="creator-box">
+
+      <div class="creator-header">
+        <div>
+          <p class="eyebrow">WELCOME TO DELULUHOUSE</p>
+          <h2>Create your main character ✨</h2>
+        </div>
+
+        <button class="close-button" onclick="goHome()">✕</button>
+      </div>
+
+
+      <div class="creator-content">
+
+        <!-- AVATAR -->
+        <div class="avatar-section">
+
+          <div class="avatar-card">
+
+            <div id="avatar" class="avatar">
+
+              <div id="avatarHair" class="hair hair-style-1"></div>
+
+              <div id="avatarFace" class="face face-1">
+                <div class="eyebrows">
+                  <span></span>
+                  <span></span>
+                </div>
+
+                <div class="eyes">
+                  <span class="eye left-eye"></span>
+                  <span class="eye right-eye"></span>
+                </div>
+
+                <div class="blush blush-left"></div>
+                <div class="blush blush-right"></div>
+
+                <div class="nose"></div>
+
+                <div id="avatarMouth" class="mouth mouth-1"></div>
+
+              </div>
+
+              <div id="avatarOutfit" class="outfit outfit-1"></div>
+
+            </div>
+
+          </div>
+
+          <input
+            type="text"
+            id="playerName"
+            placeholder="Your name..."
+            maxlength="18"
+          />
+
+        </div>
+
+
+        <!-- CUSTOMIZATION -->
+        <div class="customization">
+
+          <div class="option-group">
+            <h3>Skin tone</h3>
+
+            <div class="color-options">
+              <button class="color skin-1" onclick="changeSkin('#f8d5c2')"></button>
+              <button class="color skin-2" onclick="changeSkin('#eab99d')"></button>
+              <button class="color skin-3" onclick="changeSkin('#c98765')"></button>
+              <button class="color skin-4" onclick="changeSkin('#8a4f3d')"></button>
+            </div>
+          </div>
+
+
+          <div class="option-group">
+            <h3>Hair</h3>
+
+            <div class="choices">
+              <button onclick="changeHair(1)">Long waves</button>
+              <button onclick="changeHair(2)">Curly</button>
+              <button onclick="changeHair(3)">Bob</button>
+            </div>
+          </div>
+
+
+          <div class="option-group">
+            <h3>Hair colour</h3>
+
+            <div class="color-options">
+              <button class="color hair-black" onclick="changeHairColor('#241b1b')"></button>
+              <button class="color hair-brown" onclick="changeHairColor('#70452e')"></button>
+              <button class="color hair-blonde" onclick="changeHairColor('#d6ae5e')"></button>
+              <button class="color hair-red" onclick="changeHairColor('#9d4b35')"></button>
+            </div>
+          </div>
+
+
+          <div class="option-group">
+            <h3>Outfit</h3>
+
+            <div class="choices">
+              <button onclick="changeOutfit(1)">Cute 💗</button>
+              <button onclick="changeOutfit(2)">Cool 🖤</button>
+              <button onclick="changeOutfit(3)">Cozy ☁️</button>
+            </div>
+          </div>
+
+          <button class="main-button create-button" onclick="enterHouse()">
+            ENTER DELULUHOUSE 🏡
+          </button>
+
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- THE HOUSE -->
+  <section id="houseScreen" class="screen house-screen hidden">
+
+    <nav class="topbar">
+
+      <div class="mini-logo">DELULU<span>HOUSE</span> 💗</div>
+
+      <div class="player-info">
+        <div class="mini-avatar">♥</div>
+        <span id="displayName">Main Character</span>
+      </div>
+
+    </nav>
+
+
+    <div class="house-title">
+      <p>DAY 1 IN</p>
+      <h2>THE DELULUHOUSE ✨</h2>
+    </div>
+
+
+    <!-- HOUSE MAP -->
+    <main class="house-grid">
+
+      <button class="room room-living" onclick="openRoom('living')">
+        <span class="room-emoji">🛋️</span>
+        <strong>Living Room</strong>
+        <small>Everyone is hanging out...</small>
+      </button>
+
+      <button class="room room-pool" onclick="openRoom('pool')">
+        <span class="room-emoji">🏊</span>
+        <strong>Pool Area</strong>
+        <small>Summer vibes only.</small>
+      </button>
+
+      <button class="room room-game" onclick="openRoom('game')">
+        <span class="room-emoji">🎮</span>
+        <strong>Game Room</strong>
+        <small>Someone is losing badly.</small>
+      </button>
+
+      <button class="room room-cinema" onclick="openRoom('cinema')">
+        <span class="room-emoji">🎬</span>
+        <strong>Cinema Room</strong>
+        <small>Movie night?</small>
+      </button>
+
+      <button class="room room-rooftop" onclick="openRoom('rooftop')">
+        <span class="room-emoji">🌙</span>
+        <strong>Rooftop</strong>
+        <small>Late-night talks.</small>
+      </button>
+
+      <button class="room room-bedroom" onclick="openRoom('bedroom')">
+        <span class="room-emoji">👗</span>
+        <strong>Your Room</strong>
+        <small>Get ready, main character.</small>
+      </button>
+
+    </main>
+
+
+    <button class="spin-button" onclick="spinCrush()">
+      💘 SPIN THE CRUSH
+    </button>
+
+  </section>
+
+
+  <!-- ROOM POPUP -->
+  <div id="roomModal" class="modal hidden">
+
+    <div class="modal-card">
+
+      <button class="modal-close" onclick="closeModal()">✕</button>
+
+      <div id="roomScene" class="room-scene">✨</div>
+
+      <p id="roomLabel" class="eyebrow">DELULUHOUSE</p>
+      <h2 id="roomName">Living Room</h2>
+
+      <p id="roomText">
+        Someone looks up when you walk into the room...
+      </p>
+
+      <div id="characters" class="character-list"></div>
+
+    </div>
+
+  </div>
+
+
+  <!-- SPIN RESULT -->
+  <div id="spinModal" class="modal hidden">
+
+    <div class="modal-card spin-card">
+
+      <button class="modal-close" onclick="closeSpin()">✕</button>
+
+      <div class="spin-heart">💘</div>
+
+      <p class="eyebrow">THE UNIVERSE HAS SPOKEN...</p>
+
+      <h2 id="spinName">Someone...</h2>
+
+      <p id="spinText">is waiting for you.</p>
+
+      <button class="main-button" onclick="closeSpin()">
+        I'M ON MY WAY 😭
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- CHAT POPUP -->
+  <div id="chatModal" class="modal hidden">
+
+    <div class="chat-box">
+
+      <button class="modal-close" onclick="closeChat()">✕</button>
+
+      <div class="chat-header">
+        <div class="chat-avatar">💗</div>
+
+        <div>
+          <h3 id="chatName">Character</h3>
+          <span>● online</span>
+        </div>
+      </div>
+
+      <div id="chatMessages" class="chat-messages"></div>
+
+      <div id="chatChoices" class="chat-choices"></div>
+
+    </div>
+
+  </div>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
